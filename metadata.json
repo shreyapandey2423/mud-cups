@@ -1,0 +1,6 @@
+{
+  "name": "Mud Cups Café",
+  "description": "Premium digital menu and brand showcase website for Mud Cups Cafe in Electronic City, Bangalore, featuring their signature clay cup drinks and eats.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

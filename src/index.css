@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg-primary: #F7F2EB;
+  --color-bg-secondary: #EFE6D8;
+  --color-bg-card: #FFFDF9;
+  --color-text-primary: #2D241F;
+  --color-text-secondary: #6A5A4D;
+  --color-accent: #8B6B4D;
+  --color-accent-light: #B99872;
+  --color-accent-hover: #A67C52;
+  --color-coffee: #5A4332;
+  --color-border-custom: #DDD2C2;
+}
+
+@layer base {
+  html, body {
+    scroll-behavior: smooth;
+    background-color: #F7F2EB;
+    color: #2D241F;
+  }
+  
+  /* Minimal native scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #DDD2C2;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8B6B4D;
+  }
+  
+  @keyframes marqueeLeftToRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+  
+  body {
+    background-color: #F7F2EB;
+    color: #2D241F;
+  }
+  
+  /* Hide default scrollbars but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom simple keyframe fade-in utility */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* GLOBAL POLISH */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+/* Button & Link Hover Standards */
+button, a {
+  transition-duration: 180ms !important;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Standardized Shadows for interactive elements */
+.shadow-hover {
+  box-shadow: 0 4px 14px rgba(45,36,31,0.06);
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 8px 24px rgba(45,36,31,0.08);
+}
+
+
+/* Override global transitions to strictly avoid expensive properties */
+.transition-all, .transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, transform !important;
+}

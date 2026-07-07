@@ -1,0 +1,15 @@
+{
+  "short_name": "Mud Cups",
+  "name": "Mud Cups Café",
+  "icons": [
+    {
+      "src": "/images/mud-cups-logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#EFE6D8",
+  "background_color": "#EFE6D8"
+}
