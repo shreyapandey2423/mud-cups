@@ -2,6 +2,12 @@
   publish = "dist"
   command = "npm run build"
 
+[build.processing]
+  skip = true
+
+[build.processing.images]
+  compress = false
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -9,7 +9,7 @@ export default function VisitUsPage() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -15 }}
       transition={{ duration: 0.3 }}
-      className="bg-[#F7F2EB] min-h-screen"
+      className="bg-[#F7F2EB] min-h-[100dvh]"
     >
       <PageHero 
         accent="LOCATION"

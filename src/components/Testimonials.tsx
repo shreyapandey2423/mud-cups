@@ -150,7 +150,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
           {review.additional_ratings && (
             <div className="flex flex-wrap gap-2.5 mt-6">
               {review.additional_ratings.map((rating, i) => (
-                <div key={i} className="inline-flex items-center space-x-1.5 bg-[#F7F2EB] px-3 py-1.5 rounded-full border border-[#D4C4B4]/40">
+                <div key={i} className="inline-flex items-center space-x-1.5 bg-[#F7F2EB]/60 px-3 py-1.5 rounded-full border border-[#D4C4B4]/40 backdrop-blur-sm will-change-transform translate-z-0">
                   <span className="text-[11px]">{rating.icon}</span>
                   <span className="text-[11px] font-medium text-[#4A3F35] tracking-wide">{rating.label}</span>
                   <div className="flex space-x-[1px] ml-1.5 opacity-80">
@@ -183,7 +183,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="scroll-mt-24 bg-[#F7F2EB] py-24 lg:py-32 relative border-b border-[#DDD2C2]/40 overflow-hidden">
       {/* Subtle Texture overlay & Depth */}
-      <div className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none" style={{ backgroundImage: 'url("/images/noise.svg")', backgroundSize: '150px' }}></div>
+      <div className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("/images/noise.svg")', backgroundSize: '150px' }}></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,253,249,0.5)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">

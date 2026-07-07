@@ -1,21 +1,23 @@
-import { useState, useEffect, useMemo, useDeferredValue } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Search, Coffee, CupSoda, IceCream, Utensils, Sandwich, Pizza, Star, Scroll } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { categories } from '../data/menu';
 const menuIntroImg = '/images/menu-intro.jpg';
 
 export default function MenuSection() {
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const deferredSearchQuery = useDeferredValue(searchQuery);
-  const { scrollY } = useScroll();
-  const stickyPt = useTransform(scrollY, [0, 250], ['0.5rem', '1rem']);
-  const stickyPb = useTransform(scrollY, [0, 250], ['1.5rem', '1rem']);
-  const stickyBg = useTransform(scrollY, [0, 250], ['rgba(247, 242, 235, 0)', 'rgba(247, 242, 235, 0.8)']);
-  const stickyShadow = useTransform(scrollY, [0, 250], ['0 4px 32px -12px rgba(45,36,31,0)', '0 4px 32px -12px rgba(45,36,31,0.08)']);
-  const stickyBorder = useTransform(scrollY, [0, 250], ['rgba(212, 196, 180, 0)', 'rgba(212, 196, 180, 0.4)']);
   const [activeFilter, setActiveFilter] = useState<string>('All');
-    const [activeCategory, setActiveCategory] = useState<string>('');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>('');
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 250;
+      setIsScrolled(prev => prev !== scrolled ? scrolled : prev);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -40,11 +42,11 @@ export default function MenuSection() {
     return () => observer.disconnect();
   }, []);
 
-  const filteredMenu = useMemo(() => {
+  const getFilteredMenu = () => {
     let result = categories.map(cat => {
       let filteredItems = cat.items.filter(item => {
-        const matchesSearch = item.name.toLowerCase().includes(deferredSearchQuery.toLowerCase()) ||
-          (item.description && item.description.toLowerCase().includes(deferredSearchQuery.toLowerCase()));
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()));
 
         let matchesFilter = true;
         if (activeFilter === 'Veg') {
@@ -69,8 +71,9 @@ export default function MenuSection() {
 
     result = result.filter(cat => cat.items.length > 0);
     return result;
-  }, [deferredSearchQuery, activeFilter]);
+  };
 
+  const filteredMenu = getFilteredMenu();
 
   const filterChips = ['All', 'Veg', 'Egg', 'Drinks', 'Snacks', 'Desserts'];
 
@@ -128,7 +131,7 @@ export default function MenuSection() {
                 src={menuIntroImg}
                 alt="Snacks and Drinks at Mud Cups"
                 className="w-full h-full object-cover transition duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
-                loading="lazy" decoding="async"
+                loading="lazy"
               />
             </div>
           </motion.div>
@@ -157,14 +160,14 @@ export default function MenuSection() {
         </div>
 
         {/* Sticky Unified Navigation */}
-        <motion.div style={{ paddingTop: stickyPt, paddingBottom: stickyPb, backgroundColor: stickyBg, boxShadow: stickyShadow, borderBottomColor: stickyBorder }} className="sticky top-0 z-40 backdrop-blur-xl will-change-transform translate-z-0 border-b -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 mb-4">
+        <div className={`sticky top-0 z-40 transition duration-500 backdrop-blur-xl will-change-transform translate-z-0 ${isScrolled ? 'pt-4 pb-4 bg-[#F7F2EB]/80 shadow-[0_4px_32px_-12px_rgba(45,36,31,0.08)] border-b border-[#D4C4B4]/40' : 'pt-2 pb-6 border-b border-transparent'} -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 mb-4`}>
           <div className="max-w-[1200px] mx-auto flex flex-col items-center space-y-4">
 
             {/* Top Row: Search & Filters */}
             <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 w-full mb-[16px]">
 
               {/* Search Input */}
-              <div className="relative w-full md:w-[380px] lg:w-[440px] shrink-0 group">
+              <div className={`relative w-full shrink-0 group transition duration-300 ${isScrolled ? 'md:w-[380px] lg:w-[440px]' : 'md:w-[420px] lg:w-[480px]'}`}>
                 <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-[#6A5A4D]/60 transition group-focus-within:text-[#8B6B4D]">
                   <Search className="w-[15px] h-[15px] stroke-[2.5]" />
                 </span>
@@ -173,7 +176,7 @@ export default function MenuSection() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search the menu..." aria-label="Search the menu"
-                  className="w-full h-[40px] pl-10 pr-4 bg-[#FCF9F2] border border-[#DDD2C2]/50 text-[#2D241F] placeholder-[#6A5A4D]/50 text-[14px] font-medium focus:outline-none focus:border-[#8B6B4D]/40 focus:ring-4 focus:ring-[#8B6B4D]/5 transition duration-300 rounded-[24px] shadow-[0_1px_2px_rgba(45,36,31,0.01)]"
+                  className={`w-full pl-10 pr-4 bg-[#FCF9F2] border border-[#DDD2C2]/50 text-[#2D241F] placeholder-[#6A5A4D]/50 text-[14px] font-medium focus:outline-none focus:border-[#8B6B4D]/40 focus:ring-4 focus:ring-[#8B6B4D]/5 transition duration-300 rounded-[24px] shadow-[0_1px_2px_rgba(45,36,31,0.01)] ${isScrolled ? 'h-[38px]' : 'h-[42px]'}`}
                 />
               </div>
 
@@ -244,7 +247,8 @@ export default function MenuSection() {
             </div>
 
           </div>
-        </motion.div>
+        </div>
+
         {/* Spacer before content */}
         <div className="h-[24px]"></div>
 
@@ -359,7 +363,7 @@ export default function MenuSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-10%" }}
                   transition={{ duration: 0.8, delay: (catIdx % 2) * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                  className="bg-[#FFFDF9] rounded-[24px] border border-[#D4C4B4]/40 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:bg-[#FFFDF9] hover:border-[#D4C4B4]/60 transition duration-300 relative overflow-hidden group mb-6 sm:mb-8 scroll-mt-[140px] break-inside-avoid w-full inline-block p-6 sm:p-8"
+                  className="bg-[#FCF9F2]/60 backdrop-blur-sm will-change-transform translate-z-0 rounded-[24px] border border-[#D4C4B4]/40 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:bg-[#FFFDF9] hover:border-[#D4C4B4]/60 transition duration-300 relative overflow-hidden group mb-6 sm:mb-8 scroll-mt-[140px] break-inside-avoid w-full inline-block p-6 sm:p-8"
                 >
                   {/* Category Header */}
                   <div className="flex items-center justify-between mb-8">
@@ -382,7 +386,12 @@ export default function MenuSection() {
                   {/* Menu Items */}
                   <div className="flex flex-col">
                     {cat.items.map((item, index) => (
-                      <div key={item.id}
+                      <motion.div
+                        key={item.id}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.02 }}
                         className={`group/item transition duration-[180ms] flex flex-col hover:bg-[#EFE8DF]/40 rounded-xl px-4 py-3.5 -mx-4 ${index !== cat.items.length - 1 ? 'border-b border-[#D4C4B4]/20' : ''}`}
                       >
                         <div className="flex justify-between items-start w-full gap-5">
@@ -432,7 +441,7 @@ export default function MenuSection() {
                             )}
                           </div>
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </motion.div>

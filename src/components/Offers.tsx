@@ -43,7 +43,7 @@ export default function Offers() {
 
             {/* Dine-In Perks - Plain Typography */}
             <div className="space-y-6">
-              <span className="text-[10px] font-bold font-mono text-[#8B6B4D] uppercase tracking-widest bg-[#FFFDF9] px-4 py-1.5 rounded-full border border-[#D4C4B4]/40 w-fit">
+              <span className="text-[10px] font-bold font-mono text-[#8B6B4D] uppercase tracking-widest bg-[#FFFDF9]/60 px-4 py-1.5 rounded-full border border-[#D4C4B4]/40 w-fit backdrop-blur-sm will-change-transform translate-z-0">
                 Dine-In Benefit
               </span>
               <h3 className="text-2xl font-semibold text-[#2D241F] tracking-tight">
@@ -72,7 +72,7 @@ export default function Offers() {
 
               <div className="relative z-10 space-y-12 text-left">
                 <div className="space-y-6">
-                  <span className="text-[10px] font-bold font-mono text-[#8B6B4D] uppercase tracking-[0.2em] bg-[#F7F2EB] px-4 py-1.5 rounded-full border border-[#D4C4B4]/40 flex items-center w-fit shadow-sm">
+                  <span className="text-[10px] font-bold font-mono text-[#8B6B4D] uppercase tracking-[0.2em] bg-[#F7F2EB]/80 backdrop-blur-sm will-change-transform translate-z-0 px-4 py-1.5 rounded-full border border-[#D4C4B4]/40 flex items-center w-fit shadow-sm">
                     Online Order
                   </span>
                   <h3 className="text-3xl sm:text-4xl font-semibold text-[#2D241F] tracking-tight leading-[1.12]">
@@ -90,11 +90,11 @@ export default function Offers() {
                     href="https://www.swiggy.com/restaurants/mud-cups-electronic-city-bangalore-1218505"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-start bg-[#F7F2EB] border border-[#D4C4B4]/40 p-8 rounded-3xl transition duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
+                    className="flex flex-col items-start bg-[#F7F2EB]/50 backdrop-blur-sm will-change-transform translate-z-0 border border-[#D4C4B4]/40 p-8 rounded-3xl transition duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
                   >
                     {/* Swiggy Logo */}
                     <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-[#D4C4B4]/30 flex items-center justify-center mb-6 p-2.5 transition-transform duration-500 group-hover/btn:scale-105">
-                      <img src={swiggyLogo} alt="Swiggy" className="w-full h-auto" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <img src={swiggyLogo} alt="Swiggy" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
                       <span className="hidden font-bold text-[#FC8019] text-sm tracking-tight">SWIGGY</span>
                     </div>
                     <h4 className="text-xl font-semibold text-[#2D241F] tracking-tight mb-2">Swiggy</h4>
@@ -110,11 +110,11 @@ export default function Offers() {
                     href="https://www.zomato.com/bangalore/mud-cups-10-electronic-city-bangalore/order"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-start bg-[#F7F2EB] border border-[#D4C4B4]/40 p-8 rounded-3xl transition duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
+                    className="flex flex-col items-start bg-[#F7F2EB]/50 backdrop-blur-sm will-change-transform translate-z-0 border border-[#D4C4B4]/40 p-8 rounded-3xl transition duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
                   >
                     {/* Zomato Logo */}
                     <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-[#D4C4B4]/30 flex items-center justify-center mb-6 p-2.5 transition-transform duration-500 group-hover/btn:scale-105">
-                      <img src={zomatoLogo} alt="Zomato" className="w-full h-auto" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <img src={zomatoLogo} alt="Zomato" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
                       <span className="hidden font-bold text-[#E23744] text-sm tracking-tight font-serif italic">Zomato</span>
                     </div>
                     <h4 className="text-xl font-semibold text-[#2D241F] tracking-tight mb-2">Zomato</h4>

@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Instagram } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import MudCupsLogo from './MudCupsLogo';
 
 interface HeaderProps {
   isFirstVisit?: boolean;
+  
 }
 
 const allNavItems = [
@@ -22,21 +23,23 @@ const allNavItems = [
 const Header = function Header({ isFirstVisit }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [initialIntro] = useState(isFirstVisit);
-    const [activeSection, setActiveSection] = useState('hero');
+  const [isAtTop, setIsAtTop] = useState(true);
+  const [activeSection, setActiveSection] = useState('hero');
   const location = useLocation();
   const navigate = useNavigate();
-  const { scrollY } = useScroll();
- const headerBg = useTransform(
-  scrollY,
-  [0, 40],
-  ['rgba(32, 24, 20, 0.7)', 'rgba(32, 24, 20, 0.95)']
-);
-  const activeHeaderBg = isOpen ? 'rgba(32, 24, 20, 0.95)' : headerBg;
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const atTop = window.scrollY <= 15;
+      setIsAtTop(prev => prev !== atTop ? atTop : prev);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (location.pathname !== '/') return;
-
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       let newActive = null;
       entries.forEach(entry => {
@@ -48,19 +51,16 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
         setActiveSection(newActive);
       }
     };
-
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -60% 0px',
       threshold: 0
     };
-
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     ['hero', 'about', 'offers'].forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, [location.pathname]);
 
@@ -87,13 +87,14 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
     return location.pathname === item.path;
   };
 
-  
+  const isScrolledOrOpen = !isAtTop || isOpen;
 
-  // If the user wants the navigation to ALWAYS be light text, and the background to be rgba(32,24,20,0.18),
-  // we must use a darker background when scrolled to maintain WCAG AA.
-  // "After scrolling 40px: slightly darker. NOT black. NOT opaque."
-  // Let's use rgba(32,24,20,0.08) at top and rgba(32,24,20,0.75) when scrolled.
-  // This satisfies WCAG AA and matches "slightly darker" conceptually (darker than top).
+  const animVariants = {
+    active: {
+      opacity: 1,
+      y: 0
+    }
+  };
 
   return (
     <>
@@ -102,43 +103,53 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: initialIntro ? 2.35 : 0, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 h-[80px] ${
+        className={`fixed top-0 left-0 right-0 z-50 ${
           isFirstVisit ? 'pointer-events-none' : ''
         }`}
       >
         <div 
-          className="absolute inset-0 transition-all duration-700 pointer-events-none will-change-[background-color,backdrop-filter,box-shadow]"
+          className={`absolute inset-0 transition-opacity duration-700 pointer-events-none will-change-transform translate-z-0 ${isScrolledOrOpen ? 'opacity-100' : 'opacity-0'}`}
           style={{
-            backgroundColor: activeHeaderBg,
-            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.22)',
-backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255, 255, 255, 0.12)'
+            backgroundColor: 'rgba(247, 242, 235, 0.98)',
+            boxShadow: '0 10px 40px -10px rgba(45, 36, 31, 0.12)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            borderBottom: '1px solid rgba(212, 196, 180, 0.5)'
           }}
         />
-
         <motion.div 
-          className="relative z-10 flex items-center justify-between h-full px-6 md:px-10 max-w-[1700px] mx-auto transition-all duration-700"
+          animate="active"
+          variants={animVariants}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 w-full"
         >
-          <div className="flex items-center justify-between w-full">
-            
-            <Link 
-              to="/" 
-              onClick={() => { setIsOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="flex items-center space-x-3 md:space-x-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-[4px]"
-              aria-label="Mud Cups Home"
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 h-[72px] flex items-center justify-between">
+            <Link
+              to="/#hero"
+              onClick={(e) => { e.preventDefault(); handleNavClick('/#hero', 'hero'); }}
+              className="flex items-center space-x-3 group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-[4px] py-1 pr-1"
+              id="btn-logo-home"
             >
-              <div className="relative w-10 h-10 md:w-[46px] md:h-[46px] flex-shrink-0 transition-transform duration-500 group-hover:scale-105 drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">
+              <div className="relative group-hover:scale-105 transition-transform duration-500 ease-out">
+                {/* Subtle warm glow behind the logo */}
+                <div className="absolute inset-0 rounded-full blur-xl scale-125 transition duration-1000 bg-transparent" />
                 <MudCupsLogo 
+                  layoutId="mud-cups-main-logo" 
                   interactive={false} 
-                  className="w-full h-full text-[#F7F2EB]"
+                  className={`relative z-10 h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12 transition duration-1000 ${
+                    isScrolledOrOpen ? '' : 'drop-shadow-[0_2px_12px_rgba(45,36,31,0.7)] brightness-105 contrast-105'
+                  }`} 
                 />
               </div>
-              <div className="flex flex-col relative z-10 drop-shadow-[0_2px_6px_rgba(0,0,0,0.4)]">
-                <span className="text-sm font-black tracking-[0.2em] uppercase leading-none font-sans transition duration-1000 [text-rendering:optimizeLegibility] text-[#F7F2EB]">
+              <div className="flex flex-col relative z-10">
+                <span className={`text-sm font-black tracking-[0.2em] uppercase leading-none font-sans transition duration-1000 [text-rendering:optimizeLegibility] ${
+                  isScrolledOrOpen ? 'text-[#2D241F]' : 'text-[#F7F2EB] drop-shadow-[0_2px_8px_rgba(26,20,18,0.9)]'
+                }`}>
                   MUD CUPS
                 </span>
-                <span className="text-[8px] font-semibold tracking-[0.1em] mt-0.5 leading-none font-mono transition duration-1000 text-[rgba(255,248,240,0.82)]">
+                <span className={`text-[8px] font-semibold tracking-[0.1em] mt-0.5 leading-none font-mono transition duration-1000 ${
+                  isScrolledOrOpen ? 'text-[#6A5A4D]' : 'text-[#D4C4B4] drop-shadow-[0_1px_4px_rgba(26,20,18,0.9)]'
+                }`}>
                   REVIVING TRADITIONAL TASTE
                 </span>
               </div>
@@ -148,34 +159,40 @@ backdropFilter: 'blur(16px)',
               <nav aria-label="Primary Navigation" className="flex items-center space-x-[34px]">
                 {allNavItems.map((item) => {
                   const isActive = getIsActive(item);
-                  
+                  const baseColor = isScrolledOrOpen ? 'text-[#6A5A4D]' : 'text-[#EFE6D8] drop-shadow-[0_2px_4px_rgba(26,20,18,0.9)]';
+                  const hoverColor = isScrolledOrOpen ? 'hover:text-[#2D241F]' : 'hover:text-[#FFFDF9]';
+                  const activeColor = isScrolledOrOpen ? 'text-[#8B6B4D]' : 'text-[#FFFDF9] drop-shadow-[0_2px_4px_rgba(26,20,18,0.9)]';
+                  const underlineColor = isScrolledOrOpen ? 'bg-[#8B6B4D]' : 'bg-[#D4C4B4] shadow-[0_1px_2px_rgba(26,20,18,0.8)]';
+
                   return (
                     <a
                       key={item.id}
                       href={item.path}
                       onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
-                      className={`text-[12px] uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer relative py-2 px-1 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent group ${
-                        isActive 
-                          ? 'font-semibold text-[#F5E6D3]' 
-                          : 'font-semibold text-[rgba(255,248,240,0.82)] hover:text-[#FFFFFF] hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]'
+                      className={`text-[12px] uppercase tracking-[0.2em] transition duration-500 cursor-pointer relative py-2 px-1 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent group ${
+                        isActive ? `font-semibold ${activeColor}` : `font-medium ${baseColor} ${hoverColor}`
                       }`}
                     >
                       {item.label}
                       <span 
-                        className={`absolute bottom-1 left-0 w-full h-[1px] transition-transform duration-500 origin-center ease-[0.22,1,0.36,1] bg-[#F5E6D3] shadow-[0_1px_4px_rgba(0,0,0,0.5)] ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'}`} 
+                        className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] transition duration-500 ease-[0.22,1,0.36,1] ${underlineColor} ${
+                          isActive ? 'w-full' : 'w-0 group-hover:w-1/2'
+                        }`} 
                       />
                     </a>
                   );
                 })}
               </nav>
 
-              <div className="w-[1px] h-4 ml-2 transition duration-1000 bg-[rgba(255,255,255,0.15)]" />
+              <div className={`w-[1px] h-4 ml-2 transition duration-1000 ${isScrolledOrOpen ? 'bg-[#DDD2C2]/60' : 'bg-[#D4C4B4]/40'}`} />
 
               <a
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-[250ms] hover:scale-105 ml-2 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[rgba(255,248,240,0.9)] hover:text-[#FFFFFF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+                className={`transition duration-500 hover:scale-[1.1] ml-2 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
+                  isScrolledOrOpen ? 'text-[#6A5A4D] hover:text-[#8B6B4D] hover:bg-[#F7F2EB]' : 'text-[#EFE6D8] hover:text-[#FFFDF9] hover:bg-[#FFFDF9]/10 drop-shadow-[0_2px_4px_rgba(26,20,18,0.8)]'
+                }`}
                 aria-label="Instagram"
               >
                 <Instagram className="w-[18px] h-[18px] stroke-[1.5]" />
@@ -187,7 +204,9 @@ backdropFilter: 'blur(16px)',
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-[250ms] hover:scale-105 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[rgba(255,248,240,0.9)] hover:text-[#FFFFFF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+                className={`transition duration-500 hover:scale-[1.1] p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
+                  isScrolledOrOpen ? 'text-[#6A5A4D] hover:text-[#8B6B4D] hover:bg-[#F7F2EB]' : 'text-[#EFE6D8] hover:text-[#FFFDF9] hover:bg-[#FFFDF9]/10 drop-shadow-[0_2px_4px_rgba(26,20,18,0.8)]'
+                }`}
                 aria-label="Instagram"
               >
                 <Instagram className="w-[20px] h-[20px] stroke-[1.5]" />
@@ -196,14 +215,15 @@ backdropFilter: 'blur(16px)',
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-10 h-10 flex items-center justify-center transition duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-full text-[rgba(255,248,240,0.9)] hover:text-[#FFFFFF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+                className={`w-10 h-10 flex items-center justify-center transition duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-full ${
+                  isScrolledOrOpen ? 'text-[#2D241F] hover:bg-[#F7F2EB]' : 'text-[#EFE6D8] hover:text-[#FFFDF9] hover:bg-[#FFFDF9]/10 drop-shadow-[0_2px_4px_rgba(26,20,18,0.8)]'
+                }`}
                 aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} aria-controls="mobile-navigation"
                 id="btn-mobile-toggle"
               >
                 {isOpen ? <X className="w-5 h-5 stroke-[1.5]" /> : <Menu className="w-5 h-5 stroke-[1.5]" />}
               </button>
             </div>
-
           </div>
         </motion.div>
 
@@ -214,7 +234,7 @@ backdropFilter: 'blur(16px)',
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-0 z-40 bg-[#1A1512]/95 backdrop-blur-xl flex flex-col justify-center px-10 pt-20 pb-10"
+              className="fixed inset-0 z-40 bg-[#F7F2EB] flex flex-col justify-center px-10 pt-20 pb-10"
             >
               <nav id="mobile-navigation" className="flex flex-col space-y-6 max-h-[80vh] overflow-y-auto no-scrollbar" aria-label="Mobile Navigation">
                 <AnimatePresence mode="popLayout">
@@ -229,12 +249,12 @@ backdropFilter: 'blur(16px)',
                         key={item.id}
                         href={item.path}
                         onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
-                        className={`text-left text-2xl font-semibold uppercase tracking-[0.2em] transition cursor-pointer w-full flex items-center space-x-4 px-2 py-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5E6D3] focus-visible:ring-offset-4 focus-visible:ring-offset-transparent ${
-                          isActive ? 'text-[#F5E6D3]' : 'text-[rgba(255,248,240,0.82)]'
+                        className={`text-left text-2xl font-semibold uppercase tracking-[0.2em] transition cursor-pointer w-full flex items-center space-x-4 px-2 py-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F7F2EB] ${
+                          isActive ? 'text-[#8B6B4D]' : 'text-[#2D241F]'
                         }`}
                       >
                         <span>{item.label}</span>
-                        {isActive && <span className="w-12 h-[2px] bg-[#F5E6D3]" />}
+                        {isActive && <span className="w-12 h-[2px] bg-[#8B6B4D]" />}
                       </motion.a>
                     );
                   })}
@@ -245,14 +265,14 @@ backdropFilter: 'blur(16px)',
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="mt-auto pt-10 border-t border-[rgba(255,255,255,0.1)]"
+                className="mt-auto pt-10 border-t border-[#DDD2C2]/40"
               >
                 <div className="flex flex-col">
-                  <MudCupsLogo interactive={false} className="w-10 h-10 mb-4 text-[#F7F2EB]" />
-                  <span className="text-sm font-black tracking-[0.2em] uppercase leading-none font-sans text-[#F7F2EB]">
+                  <MudCupsLogo interactive={false} className="w-10 h-10 mb-4" />
+                  <span className="text-sm font-black tracking-[0.2em] uppercase leading-none font-sans text-[#2D241F]">
                     MUD CUPS
                   </span>
-                  <span className="text-[10px] font-medium tracking-[0.1em] mt-1.5 leading-none font-mono text-[rgba(255,248,240,0.82)]">
+                  <span className="text-[10px] font-medium tracking-[0.1em] mt-1.5 leading-none font-mono text-[#6A5A4D]">
                     REVIVING TRADITIONAL TASTE
                   </span>
                 </div>
@@ -264,5 +284,4 @@ backdropFilter: 'blur(16px)',
     </>
   );
 }
-
 export default React.memo(Header);
