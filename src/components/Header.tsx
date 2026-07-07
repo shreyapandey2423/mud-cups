@@ -26,7 +26,11 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const { scrollY } = useScroll();
-  const headerBg = useTransform(scrollY, [0, 40], ['rgba(32, 24, 20, 0.18)', 'rgba(32, 24, 20, 0.6)']);
+ const headerBg = useTransform(
+  scrollY,
+  [0, 40],
+  ['rgba(42, 32, 27, 0.30)', 'rgba(32, 24, 20, 0.72)']
+);
   const activeHeaderBg = isOpen ? 'rgba(32, 24, 20, 0.95)' : headerBg;
 
 
@@ -106,10 +110,9 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
           className="absolute inset-0 transition-all duration-700 pointer-events-none will-change-[background-color,backdrop-filter,box-shadow]"
           style={{
             backgroundColor: activeHeaderBg,
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-            backdropFilter: 'blur(18px)',
-            WebkitBackdropFilter: 'blur(18px)',
-            border: '1px solid rgba(255, 255, 255, 0.08)'
+            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.22)',
+backdropFilter: 'blur(22px)',           WebkitBackdropFilter: 'blur(22px)',
+            border: '1px solid rgba(255, 255, 255, 0.12)'
           }}
         />
 
