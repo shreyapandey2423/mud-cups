@@ -44,13 +44,16 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
       {/* 1. LAYERED BACKGROUND SYSTEM (DEPTH & LIGHTING) */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#2D241F]">
         {/* Restored Original AI Hero Image with Color Grading and Responsive Optimization */}
-        <img
+        <motion.img
           src="/images/hero.jpg"
           alt="Mud Cups Café"
           fetchPriority="high"
           loading="eager"
           decoding="sync"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-90 contrast-[1.08] brightness-[0.92] saturate-[1.1] sepia-[0.1]"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-90 contrast-[1.08] brightness-[0.92] saturate-[1.1] sepia-[0.1] will-change-transform"
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.05 }}
+          transition={{ duration: 25, ease: "easeOut" }}
         />
         
         {/* Cinematic Multi-layer Gradient Overlay (Responsively tuned for readability) */}
@@ -62,17 +65,19 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
         
         {/* Elegant light bloom (Top Left - Warm sunlight entering) */}
         <motion.div 
-          animate={{ opacity: [0.3, 0.45, 0.3], scale: [1, 1.05, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(229,213,197,0.8)_0%,transparent_70%)] opacity-40 mix-blend-overlay pointer-events-none will-change-transform" 
+          initial={{ opacity: 0.3, scale: 1 }}
+          animate={{ opacity: 0.45, scale: 1.05 }}
+          transition={{ duration: 12, ease: "easeOut", once: true }}
+          className="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(229,213,197,0.8)_0%,transparent_70%)] opacity-40 pointer-events-none will-change-transform" 
           style={{ transform: 'translateZ(0)' }}
         />
 
         {/* Elegant light bloom (Bottom Right - Ambient café warmth) */}
         <motion.div 
-          animate={{ opacity: [0.2, 0.35, 0.2], scale: [1, 1.1, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-[20%] -right-[10%] w-[70vw] h-[70vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,196,180,0.6)_0%,transparent_70%)] opacity-30 mix-blend-overlay pointer-events-none will-change-transform" 
+          initial={{ opacity: 0.2, scale: 1 }}
+          animate={{ opacity: 0.35, scale: 1.1 }}
+          transition={{ duration: 15, ease: "easeOut", delay: 2, once: true }}
+          className="absolute -bottom-[20%] -right-[10%] w-[70vw] h-[70vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,196,180,0.6)_0%,transparent_70%)] opacity-30 pointer-events-none will-change-transform" 
           style={{ transform: 'translateZ(0)' }}
         />
         
@@ -81,7 +86,7 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
         
 
         {/* Cinematic Noise & Vignette */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.15] mix-blend-overlay" 
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.15]" 
              style={{ backgroundImage: 'url("/images/noise.svg")', backgroundSize: '150px' }} />
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(45,36,31,0.08)_100%)]" />
       </div>
@@ -98,7 +103,7 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
           transition={{ duration: 0.4, delay: introDelay + 0.0, ease: easeCurve }}
           className="mb-6 sm:mb-8"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFDF9]/90 backdrop-blur-md will-change-transform translate-z-0 border border-[#FFFDF9]/20 text-[10px] sm:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFDF9] border border-[#FFFDF9]/20 text-[10px] sm:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
             <Sparkles className="w-3 h-3 text-[#B99872]" />
             <span>Reviving Traditional Taste</span>
           </span>

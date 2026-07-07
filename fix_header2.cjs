@@ -1,5 +1,7 @@
-import React from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+const fs = require('fs');
+
+let content = `import React from "react";
+import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Instagram } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -22,13 +24,20 @@ const allNavItems = [
 const Header = function Header({ isFirstVisit }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [initialIntro] = useState(isFirstVisit);
-    const [activeSection, setActiveSection] = useState('hero');
+  const [isAtTop, setIsAtTop] = useState(true);
+  const [activeSection, setActiveSection] = useState('hero');
   const location = useLocation();
   const navigate = useNavigate();
-  const { scrollY } = useScroll();
-  const headerBg = useTransform(scrollY, [0, 40], ['rgba(32, 24, 20, 0.18)', 'rgba(32, 24, 20, 0.6)']);
-  const activeHeaderBg = isOpen ? 'rgba(32, 24, 20, 0.95)' : headerBg;
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const atTop = window.scrollY <= 40;
+      setIsAtTop(prev => prev !== atTop ? atTop : prev);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (location.pathname !== '/') return;
@@ -83,7 +92,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
     return location.pathname === item.path;
   };
 
-  
+  const isScrolledOrOpen = !isAtTop || isOpen;
 
   // If the user wants the navigation to ALWAYS be light text, and the background to be rgba(32,24,20,0.18),
   // we must use a darker background when scrolled to maintain WCAG AA.
@@ -98,18 +107,18 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: initialIntro ? 2.35 : 0, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 ${
+        className={\`fixed top-0 left-0 right-0 z-50 \${
           isFirstVisit ? 'pointer-events-none' : ''
-        }`}
+        }\`}
       >
         <div 
           className="absolute inset-0 transition-all duration-700 pointer-events-none will-change-[background-color,backdrop-filter,box-shadow]"
           style={{
-            backgroundColor: activeHeaderBg,
+            backgroundColor: isScrolledOrOpen ? 'rgba(32, 24, 20, 0.75)' : 'rgba(32, 24, 20, 0.18)',
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
             backdropFilter: 'blur(18px)',
             WebkitBackdropFilter: 'blur(18px)',
-            border: '1px solid rgba(255, 255, 255, 0.08)'
+            borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
           }}
         />
 
@@ -150,15 +159,17 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                       key={item.id}
                       href={item.path}
                       onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
-                      className={`text-[12px] uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer relative py-2 px-1 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent group ${
+                      className={\`text-[12px] uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer relative py-2 px-1 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent group \${
                         isActive 
                           ? 'font-semibold text-[#F5E6D3]' 
                           : 'font-semibold text-[rgba(255,248,240,0.82)] hover:text-[#FFFFFF] hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]'
-                      }`}
+                      }\`}
                     >
                       {item.label}
                       <span 
-                        className={`absolute bottom-1 left-0 w-full h-[1px] transition-transform duration-500 origin-center ease-[0.22,1,0.36,1] bg-[#F5E6D3] shadow-[0_1px_4px_rgba(0,0,0,0.5)] ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'}`} 
+                        className={\`absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] transition-all duration-500 ease-[0.22,1,0.36,1] bg-[#F5E6D3] shadow-[0_1px_4px_rgba(0,0,0,0.5)] \${
+                          isActive ? 'w-full' : 'w-0 group-hover:w-1/2'
+                        }\`} 
                       />
                     </a>
                   );
@@ -171,7 +182,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-[250ms] hover:scale-105 ml-2 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[rgba(255,248,240,0.9)] hover:text-[#FFFFFF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+                className="transition-all duration-250 hover:scale-105 ml-2 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[rgba(255,248,240,0.9)] hover:text-[#FFFFFF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
                 aria-label="Instagram"
               >
                 <Instagram className="w-[18px] h-[18px] stroke-[1.5]" />
@@ -183,7 +194,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-[250ms] hover:scale-105 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[rgba(255,248,240,0.9)] hover:text-[#FFFFFF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+                className="transition-all duration-250 hover:scale-105 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[rgba(255,248,240,0.9)] hover:text-[#FFFFFF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
                 aria-label="Instagram"
               >
                 <Instagram className="w-[20px] h-[20px] stroke-[1.5]" />
@@ -225,9 +236,9 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                         key={item.id}
                         href={item.path}
                         onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
-                        className={`text-left text-2xl font-semibold uppercase tracking-[0.2em] transition cursor-pointer w-full flex items-center space-x-4 px-2 py-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5E6D3] focus-visible:ring-offset-4 focus-visible:ring-offset-transparent ${
+                        className={\`text-left text-2xl font-semibold uppercase tracking-[0.2em] transition cursor-pointer w-full flex items-center space-x-4 px-2 py-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5E6D3] focus-visible:ring-offset-4 focus-visible:ring-offset-transparent \${
                           isActive ? 'text-[#F5E6D3]' : 'text-[rgba(255,248,240,0.82)]'
-                        }`}
+                        }\`}
                       >
                         <span>{item.label}</span>
                         {isActive && <span className="w-12 h-[2px] bg-[#F5E6D3]" />}
@@ -262,3 +273,6 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
 }
 
 export default React.memo(Header);
+`;
+
+fs.writeFileSync('src/components/Header.tsx', content);

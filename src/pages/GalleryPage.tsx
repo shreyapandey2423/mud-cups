@@ -96,7 +96,7 @@ export default function GalleryPage() {
             style={{
               animation: 'marqueeLeftToRight 50s linear infinite',
               animationPlayState: isPaused ? 'paused' : 'running',
-              transform: 'translateX(-50%)' // initial state for the keyframe
+              transform: 'translate3d(-50%, 0, 0)' // initial state for the keyframe
             }}
           >
             {/* First Set */}
@@ -115,7 +115,7 @@ export default function GalleryPage() {
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
                     className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
-                    loading="lazy"
+                    loading="lazy" decoding="async"
                   />
                 </div>
               ))}
@@ -137,7 +137,7 @@ export default function GalleryPage() {
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
                     className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
-                    loading="lazy"
+                    loading="lazy" decoding="async"
                   />
                 </div>
               ))}

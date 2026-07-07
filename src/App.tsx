@@ -7,10 +7,11 @@ import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 
 import Home from './pages/Home';
-import MenuPage from './pages/MenuPage';
-import GalleryPage from './pages/GalleryPage';
-import TestimonialsPage from './pages/TestimonialsPage';
-import VisitUsPage from './pages/VisitUsPage';
+import { Suspense, lazy } from 'react';
+const MenuPage = lazy(() => import('./pages/MenuPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
+const VisitUsPage = lazy(() => import('./pages/VisitUsPage'));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -87,6 +88,9 @@ function MainApp() {
       <main>
         
           <AnimatePresence mode="wait">
+            {}
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-[#F7F2EB]"><div className="w-8 h-8 rounded-full border-2 border-[#8B6B4D] border-t-transparent animate-spin" /></div>}>
+            {}
             {/* @ts-expect-error React 19 types issue with key on Routes */}
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home isFirstVisit={isFirstVisit} />} />
@@ -96,6 +100,7 @@ function MainApp() {
               <Route path="/visit-us" element={<VisitUsPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
+            </Suspense>
           </AnimatePresence>
         
       </main>
