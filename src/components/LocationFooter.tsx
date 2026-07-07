@@ -77,18 +77,18 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                     Call Us
                   </h3>
                   <div className="flex flex-col space-y-2">
-                    <a href="tel:+918105457694" aria-label="Call Mud Cups at +91 81054 57694" className="flex items-center space-x-3 text-[15px] text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] rounded-[4px]">
+                    <a href="tel:+918105457694" aria-label="Call Mud Cups at +91 81054 57694" className="flex items-center space-x-3 text-[15px] text-[#6A5A4D] hover:text-[#8B6B4D] transition group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] rounded-[4px]">
                       <Phone className="w-4 h-4 text-[#8B6B4D]" />
                       <span className="relative">
                         +91 81054 57694
-                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-[180ms] ease-out group-hover:w-full" />
+                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B6B4D] transition duration-[180ms] ease-out group-hover:w-full" />
                       </span>
                     </a>
-                    <a href="tel:+918105003387" aria-label="Call Mud Cups at +91 81050 03387" className="flex items-center space-x-3 text-[15px] text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] rounded-[4px]">
+                    <a href="tel:+918105003387" aria-label="Call Mud Cups at +91 81050 03387" className="flex items-center space-x-3 text-[15px] text-[#6A5A4D] hover:text-[#8B6B4D] transition group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] rounded-[4px]">
                       <Phone className="w-4 h-4 text-[#8B6B4D]" />
                       <span className="relative">
                         +91 81050 03387
-                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-[180ms] ease-out group-hover:w-full" />
+                        <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B6B4D] transition duration-[180ms] ease-out group-hover:w-full" />
                       </span>
                     </a>
                   </div>
@@ -105,10 +105,10 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Follow Mud Cups on Instagram"
-                      className="group flex items-center space-x-4 p-3 -ml-3 rounded-[12px] hover:bg-[#F7F2EB]/50 border border-transparent hover:border-[#DDD2C2]/40 hover:translate-x-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] transition-all duration-[180ms] ease-out cursor-pointer w-full max-w-[320px]"
+                      className="group flex items-center space-x-4 p-3 -ml-3 rounded-[12px] hover:bg-[#F7F2EB]/50 border border-transparent hover:border-[#DDD2C2]/40 hover:translate-x-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] transition duration-[180ms] ease-out cursor-pointer w-full max-w-[320px]"
                     >
-                      <Instagram className="w-[18px] h-[18px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition-colors duration-[180ms] ease-out shrink-0" />
-                      <span className="text-[14px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition-colors duration-[180ms] ease-out inline-block">
+                      <Instagram className="w-[18px] h-[18px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition duration-[180ms] ease-out shrink-0" />
+                      <span className="text-[14px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition duration-[180ms] ease-out inline-block">
                         @mud_cups_ananthnagar
                       </span>
                     </a>
@@ -118,10 +118,10 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Visit Mud Cups Website"
-                      className="group flex items-center space-x-4 p-3 -ml-3 rounded-[12px] hover:bg-[#F7F2EB]/50 border border-transparent hover:border-[#DDD2C2]/40 hover:translate-x-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] transition-all duration-[180ms] ease-out cursor-pointer w-full max-w-[320px]"
+                      className="group flex items-center space-x-4 p-3 -ml-3 rounded-[12px] hover:bg-[#F7F2EB]/50 border border-transparent hover:border-[#DDD2C2]/40 hover:translate-x-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] transition duration-[180ms] ease-out cursor-pointer w-full max-w-[320px]"
                     >
-                      <Globe className="w-[18px] h-[18px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition-colors duration-[180ms] ease-out shrink-0" />
-                      <span className="text-[14px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition-colors duration-[180ms] ease-out inline-block">
+                      <Globe className="w-[18px] h-[18px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition duration-[180ms] ease-out shrink-0" />
+                      <span className="text-[14px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition duration-[180ms] ease-out inline-block">
                         mudcups.in
                       </span>
                     </a>
@@ -129,10 +129,10 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                     <a
                       href="mailto:mudcupsofficial@gmail.com?subject=Inquiry%20from%20Mud%20Cups%20Website"
                       aria-label="Send an email to Mud Cups"
-                      className="group flex items-center space-x-4 p-3 -ml-3 rounded-[12px] hover:bg-[#F7F2EB]/50 border border-transparent hover:border-[#DDD2C2]/40 hover:translate-x-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] transition-all duration-[180ms] ease-out cursor-pointer w-full max-w-[320px]"
+                      className="group flex items-center space-x-4 p-3 -ml-3 rounded-[12px] hover:bg-[#F7F2EB]/50 border border-transparent hover:border-[#DDD2C2]/40 hover:translate-x-[3px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] transition duration-[180ms] ease-out cursor-pointer w-full max-w-[320px]"
                     >
-                      <Mail className="w-[18px] h-[18px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition-colors duration-[180ms] ease-out shrink-0" />
-                      <span className="text-[14px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition-colors duration-[180ms] ease-out inline-block">
+                      <Mail className="w-[18px] h-[18px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition duration-[180ms] ease-out shrink-0" />
+                      <span className="text-[14px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition duration-[180ms] ease-out inline-block">
                         mudcupsofficial@gmail.com
                       </span>
                     </a>
@@ -151,11 +151,11 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                       href="https://www.instagram.com/mud_cups_ananthnagar/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="Follow Mud Cups Ananthnagar on Instagram" className="group flex items-center space-x-4 p-5 bg-[#FFFDF9] border border-[#DDD2C2]/40 rounded-[16px] shadow-[0_2px_12px_rgba(45,36,31,0.02)] hover:shadow-[0_8px_24px_rgba(45,36,31,0.05)] transition-all duration-[180ms] ease-out cursor-pointer w-full max-w-[380px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8]"
+                      aria-label="Follow Mud Cups Ananthnagar on Instagram" className="group flex items-center space-x-4 p-5 bg-[#FFFDF9] border border-[#DDD2C2]/40 rounded-[16px] shadow-[0_2px_12px_rgba(45,36,31,0.02)] hover:shadow-[0_8px_24px_rgba(45,36,31,0.05)] transition duration-[180ms] ease-out cursor-pointer w-full max-w-[380px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8]"
                     >
-                      <Instagram className="w-[22px] h-[22px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition-colors duration-[180ms] shrink-0" />
+                      <Instagram className="w-[22px] h-[22px] stroke-[1.5] text-[#6A5A4D] group-hover:text-[#8B6B4D] transition duration-[180ms] shrink-0" />
                       <div className="flex flex-col space-y-0.5 transform transition-transform duration-[180ms] ease-out group-hover:translate-x-[3px]">
-                        <span className="text-[15px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition-colors duration-[180ms]">
+                        <span className="text-[15px] font-medium text-[#2D241F] group-hover:text-[#8B6B4D] transition duration-[180ms]">
                           @mud_cups_ananthnagar
                         </span>
                         <span className="text-[12px] text-[#6A5A4D] font-normal">
@@ -190,7 +190,7 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Mud Cups Location Map"
-                  className="w-full h-full object-cover transition-all duration-700 ease-[0.22,1,0.36,1] grayscale-0 group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition duration-700 ease-[0.22,1,0.36,1] grayscale-0 group-hover:grayscale-0"
                 ></iframe>
               </div>
 
@@ -236,7 +236,7 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
           className="border-t border-[#D4C4B4]/40 pt-20 pb-16 bg-[#F7F2EB] relative z-10"
         >
           {/* Subtle ambient light */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[radial-gradient(circle_at_top,rgba(255,253,249,0.3)_0%,transparent_70%)] rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[radial-gradient(circle_at_top,rgba(255,253,249,0.3)_0%,transparent_70%)] rounded-full  pointer-events-none" />
 
           <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-16 relative z-10">
             
@@ -261,17 +261,17 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
             <div className="flex flex-col items-start md:items-end space-y-12 md:space-y-16">
               {/* Minimal Links */}
               <nav aria-label="Footer Navigation" className="flex flex-wrap gap-8">
-                 <Link to="/menu" aria-label="View Menu" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+                 <Link to="/menu" aria-label="View Menu" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                    Menu
-                   <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
+                   <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
                  </Link>
-                 <Link to="/visit-us" aria-label="Visit Us Location Information" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+                 <Link to="/visit-us" aria-label="Visit Us Location Information" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                    Visit Us
-                   <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
+                   <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
                  </Link>
-                 <a href="https://www.instagram.com/mud_cups_ananthnagar/" target="_blank" rel="noopener noreferrer" aria-label="Follow Mud Cups on Instagram" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+                 <a href="https://www.instagram.com/mud_cups_ananthnagar/" target="_blank" rel="noopener noreferrer" aria-label="Follow Mud Cups on Instagram" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                    Instagram
-                   <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
+                   <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
                  </a>
               </nav>
 

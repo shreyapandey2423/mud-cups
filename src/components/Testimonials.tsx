@@ -105,7 +105,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
 
   return (
     <div
-      className="bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-[32px] shadow-[0_12px_32px_-12px_rgba(45,36,31,0.06)] transition-all duration-[400ms] ease-[0.22,1,0.36,1] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-16px_rgba(45,36,31,0.12)] hover:border-[#8B6B4D]/30 flex flex-col h-full ring-1 ring-white/60"
+      className="bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-[32px] shadow-[0_12px_32px_-12px_rgba(45,36,31,0.06)] transition duration-[400ms] ease-[0.22,1,0.36,1] hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-16px_rgba(45,36,31,0.12)] hover:border-[#8B6B4D]/30 flex flex-col h-full ring-1 ring-white/60"
     >
       {/* Top of Card */}
       <div className="flex justify-between items-start mb-6">
@@ -140,7 +140,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
             <button
               type="button"
               onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded} aria-label={isExpanded ? "Show less of the review" : "Read more of the review"}
-              className="mt-3 text-[12px] font-medium text-[#8B6B4D] hover:text-[#2D241F] transition-colors inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-[2px] px-1 -ml-1 uppercase tracking-wider"
+              className="mt-3 text-[12px] font-medium text-[#8B6B4D] hover:text-[#2D241F] transition inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-[2px] px-1 -ml-1 uppercase tracking-wider"
             >
               {isExpanded ? 'Show Less' : 'Read More'}
             </button>

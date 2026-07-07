@@ -109,12 +109,12 @@ export default function GalleryPage() {
                   tabIndex={0}
                   role="button"
                   aria-label={`View Gallery Image ${index + 1}`}
-                  className="relative flex-shrink-0 cursor-zoom-in rounded-[20px] overflow-hidden bg-[#EFE6D8] shadow-[0_4px_16px_rgba(45,36,31,0.06)] group transition-all duration-300 ease-out hover:shadow-[0_12px_32px_rgba(45,36,31,0.1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] w-[340px] h-[225px] md:w-[460px] md:h-[305px] lg:w-[560px] lg:h-[375px]"
+                  className="relative flex-shrink-0 cursor-zoom-in rounded-[20px] overflow-hidden bg-[#EFE6D8] shadow-[0_4px_16px_rgba(45,36,31,0.06)] group transition duration-300 ease-out hover:shadow-[0_12px_32px_rgba(45,36,31,0.1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] w-[340px] h-[225px] md:w-[460px] md:h-[305px] lg:w-[560px] lg:h-[375px]"
                 >
                   <img 
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
-                    className="w-full h-full object-cover object-center transform-gpu transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
+                    className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
                     loading="lazy"
                   />
                 </div>
@@ -131,12 +131,12 @@ export default function GalleryPage() {
                   tabIndex={0}
                   role="button"
                   aria-label={`View Gallery Image ${index + 1}`}
-                  className="relative flex-shrink-0 cursor-zoom-in rounded-[20px] overflow-hidden bg-[#EFE6D8] shadow-[0_4px_16px_rgba(45,36,31,0.06)] group transition-all duration-300 ease-out hover:shadow-[0_12px_32px_rgba(45,36,31,0.1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] w-[340px] h-[225px] md:w-[460px] md:h-[305px] lg:w-[560px] lg:h-[375px]"
+                  className="relative flex-shrink-0 cursor-zoom-in rounded-[20px] overflow-hidden bg-[#EFE6D8] shadow-[0_4px_16px_rgba(45,36,31,0.06)] group transition duration-300 ease-out hover:shadow-[0_12px_32px_rgba(45,36,31,0.1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] w-[340px] h-[225px] md:w-[460px] md:h-[305px] lg:w-[560px] lg:h-[375px]"
                 >
                   <img 
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
-                    className="w-full h-full object-cover object-center transform-gpu transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
+                    className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
                     loading="lazy"
                   />
                 </div>
@@ -161,7 +161,7 @@ export default function GalleryPage() {
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-colors z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               aria-label="Previous Image"
             >
               <ChevronLeft className="w-6 h-6 stroke-[1.5]" />
@@ -169,7 +169,7 @@ export default function GalleryPage() {
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); handleNext(); }}
-              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-colors z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               aria-label="Next Image"
             >
               <ChevronRight className="w-6 h-6 stroke-[1.5]" />
@@ -177,7 +177,7 @@ export default function GalleryPage() {
             <button
               type="button"
               onClick={handleClose}
-              className="absolute top-6 right-6 sm:top-8 sm:right-8 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition-colors z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="absolute top-6 right-6 sm:top-8 sm:right-8 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-white transition z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               aria-label="Close Lightbox"
             >
               <X className="w-6 h-6 stroke-[1.5]" />

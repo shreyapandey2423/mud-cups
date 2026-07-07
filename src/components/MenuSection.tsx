@@ -130,7 +130,7 @@ export default function MenuSection() {
               <img
                 src={menuIntroImg}
                 alt="Snacks and Drinks at Mud Cups"
-                className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
+                className="w-full h-full object-cover transition duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -160,15 +160,15 @@ export default function MenuSection() {
         </div>
 
         {/* Sticky Unified Navigation */}
-        <div className={`sticky top-0 z-40 transition-all duration-500 backdrop-blur-xl will-change-transform translate-z-0 ${isScrolled ? 'pt-4 pb-4 bg-[#F7F2EB]/80 shadow-[0_4px_32px_-12px_rgba(45,36,31,0.08)] border-b border-[#D4C4B4]/40' : 'pt-2 pb-6 border-b border-transparent'} -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 mb-4`}>
+        <div className={`sticky top-0 z-40 transition duration-500 backdrop-blur-xl will-change-transform translate-z-0 ${isScrolled ? 'pt-4 pb-4 bg-[#F7F2EB]/80 shadow-[0_4px_32px_-12px_rgba(45,36,31,0.08)] border-b border-[#D4C4B4]/40' : 'pt-2 pb-6 border-b border-transparent'} -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 mb-4`}>
           <div className="max-w-[1200px] mx-auto flex flex-col items-center space-y-4">
 
             {/* Top Row: Search & Filters */}
             <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 w-full mb-[16px]">
 
               {/* Search Input */}
-              <div className={`relative w-full shrink-0 group transition-all duration-300 ${isScrolled ? 'md:w-[380px] lg:w-[440px]' : 'md:w-[420px] lg:w-[480px]'}`}>
-                <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-[#6A5A4D]/60 transition-colors group-focus-within:text-[#8B6B4D]">
+              <div className={`relative w-full shrink-0 group transition duration-300 ${isScrolled ? 'md:w-[380px] lg:w-[440px]' : 'md:w-[420px] lg:w-[480px]'}`}>
+                <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-[#6A5A4D]/60 transition group-focus-within:text-[#8B6B4D]">
                   <Search className="w-[15px] h-[15px] stroke-[2.5]" />
                 </span>
                 <input
@@ -176,7 +176,7 @@ export default function MenuSection() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search the menu..." aria-label="Search the menu"
-                  className={`w-full pl-10 pr-4 bg-[#FCF9F2] border border-[#DDD2C2]/50 text-[#2D241F] placeholder-[#6A5A4D]/50 text-[14px] font-medium focus:outline-none focus:border-[#8B6B4D]/40 focus:ring-4 focus:ring-[#8B6B4D]/5 transition-all duration-300 rounded-[24px] shadow-[0_1px_2px_rgba(45,36,31,0.01)] ${isScrolled ? 'h-[38px]' : 'h-[42px]'}`}
+                  className={`w-full pl-10 pr-4 bg-[#FCF9F2] border border-[#DDD2C2]/50 text-[#2D241F] placeholder-[#6A5A4D]/50 text-[14px] font-medium focus:outline-none focus:border-[#8B6B4D]/40 focus:ring-4 focus:ring-[#8B6B4D]/5 transition duration-300 rounded-[24px] shadow-[0_1px_2px_rgba(45,36,31,0.01)] ${isScrolled ? 'h-[38px]' : 'h-[42px]'}`}
                 />
               </div>
 
@@ -187,7 +187,7 @@ export default function MenuSection() {
                     key={chip}
                     type="button"
                     onClick={() => setActiveFilter(chip)} aria-pressed={activeFilter === chip}
-                    className={`shrink-0 px-[16px] h-[34px] rounded-full text-[13px] font-medium transition-all duration-[180ms] border flex items-center justify-center hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9] ${
+                    className={`shrink-0 px-[16px] h-[34px] rounded-full text-[13px] font-medium transition duration-[180ms] border flex items-center justify-center hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9] ${
                       activeFilter === chip
                         ? 'bg-[#8B6B4D] border-[#8B6B4D] text-white shadow-[0_2px_8px_rgba(139,107,77,0.25)]'
                         : 'bg-transparent border-[#DDD2C2]/80 text-[#8B6B4D] hover:bg-[#F7F2EB]'
@@ -228,7 +228,7 @@ export default function MenuSection() {
                           window.scrollTo({ top, behavior: 'smooth' });
                         }
                       }}
-                      className={`snap-start shrink-0 flex items-center gap-[6px] h-[36px] px-[16px] rounded-[999px] text-[13px] font-medium transition-all duration-[180ms] hover:scale-[1.02] ${
+                      className={`snap-start shrink-0 flex items-center gap-[6px] h-[36px] px-[16px] rounded-[999px] text-[13px] font-medium transition duration-[180ms] hover:scale-[1.02] ${
                         isActive
                           ? 'bg-[#8B6B4D] text-white shadow-[0_2px_8px_rgba(139,107,77,0.25)]'
                           : 'bg-transparent text-[#6A5A4D] hover:bg-[#EFE8DF] hover:text-[#2D241F]'
@@ -272,7 +272,7 @@ export default function MenuSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               {/* Card 1 */}
-              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
+              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(139,107,77,0.03),_transparent_50%)] pointer-events-none" />
                 <div className="flex flex-col relative z-10">
                   <div className="flex items-center space-x-4 mb-2">
@@ -290,7 +290,7 @@ export default function MenuSection() {
               </div>
 
               {/* Card 2 */}
-              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
+              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(139,107,77,0.03),_transparent_50%)] pointer-events-none" />
                 <div className="flex flex-col relative z-10">
                   <div className="flex items-center space-x-4 mb-2">
@@ -308,7 +308,7 @@ export default function MenuSection() {
               </div>
 
               {/* Card 3 */}
-              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
+              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(139,107,77,0.03),_transparent_50%)] pointer-events-none" />
                 <div className="flex flex-col relative z-10">
                   <div className="flex items-center space-x-4 mb-2">
@@ -326,7 +326,7 @@ export default function MenuSection() {
               </div>
 
               {/* Card 4 */}
-              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition-all duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
+              <div className="group bg-[#FFFDF9] border border-[#D4C4B4]/40 rounded-[24px] p-6 sm:p-8 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:border-[#D4C4B4]/60 transition duration-300 hover:-translate-y-1 relative overflow-hidden flex justify-between items-center">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(139,107,77,0.03),_transparent_50%)] pointer-events-none" />
                 <div className="flex flex-col relative z-10">
                   <div className="flex items-center space-x-4 mb-2">
@@ -363,7 +363,7 @@ export default function MenuSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-10%" }}
                   transition={{ duration: 0.8, delay: (catIdx % 2) * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                  className="bg-[#FCF9F2]/60 backdrop-blur-sm will-change-transform translate-z-0 rounded-[24px] border border-[#D4C4B4]/40 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:bg-[#FFFDF9] hover:border-[#D4C4B4]/60 transition-all duration-300 relative overflow-hidden group mb-6 sm:mb-8 scroll-mt-[140px] break-inside-avoid w-full inline-block p-6 sm:p-8"
+                  className="bg-[#FCF9F2]/60 backdrop-blur-sm will-change-transform translate-z-0 rounded-[24px] border border-[#D4C4B4]/40 shadow-[0_4px_24px_rgba(45,36,31,0.02)] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] hover:bg-[#FFFDF9] hover:border-[#D4C4B4]/60 transition duration-300 relative overflow-hidden group mb-6 sm:mb-8 scroll-mt-[140px] break-inside-avoid w-full inline-block p-6 sm:p-8"
                 >
                   {/* Category Header */}
                   <div className="flex items-center justify-between mb-8">
@@ -392,7 +392,7 @@ export default function MenuSection() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.02 }}
-                        className={`group/item transition-colors duration-[180ms] flex flex-col hover:bg-[#EFE8DF]/40 rounded-xl px-4 py-3.5 -mx-4 ${index !== cat.items.length - 1 ? 'border-b border-[#D4C4B4]/20' : ''}`}
+                        className={`group/item transition duration-[180ms] flex flex-col hover:bg-[#EFE8DF]/40 rounded-xl px-4 py-3.5 -mx-4 ${index !== cat.items.length - 1 ? 'border-b border-[#D4C4B4]/20' : ''}`}
                       >
                         <div className="flex justify-between items-start w-full gap-5">
                           <div className="flex flex-col">
@@ -427,15 +427,15 @@ export default function MenuSection() {
                           <div className="shrink-0 text-right flex items-center space-x-4 pt-0.5">
                             {(item.priceR !== undefined || item.priceL !== undefined) ? (
                               <>
-                                <span className="text-[15px] font-semibold text-[#2D241F] font-mono tabular-nums leading-none w-8 text-center group-hover/item:text-[#8B6B4D] transition-colors duration-[180ms]">
+                                <span className="text-[15px] font-semibold text-[#2D241F] font-mono tabular-nums leading-none w-8 text-center group-hover/item:text-[#8B6B4D] transition duration-[180ms]">
                                   {item.priceR ? `₹${item.priceR}` : '-'}
                                 </span>
-                                <span className="text-[15px] font-semibold text-[#2D241F] font-mono tabular-nums leading-none w-8 text-center group-hover/item:text-[#8B6B4D] transition-colors duration-[180ms]">
+                                <span className="text-[15px] font-semibold text-[#2D241F] font-mono tabular-nums leading-none w-8 text-center group-hover/item:text-[#8B6B4D] transition duration-[180ms]">
                                   {item.priceL ? `₹${item.priceL}` : '-'}
                                 </span>
                               </>
                             ) : (
-                              <span className="text-[15px] font-semibold text-[#2D241F] font-mono tabular-nums leading-none group-hover/item:text-[#8B6B4D] transition-colors duration-[180ms]">
+                              <span className="text-[15px] font-semibold text-[#2D241F] font-mono tabular-nums leading-none group-hover/item:text-[#8B6B4D] transition duration-[180ms]">
                                 ₹{item.price}
                               </span>
                             )}
@@ -461,7 +461,7 @@ export default function MenuSection() {
                   setSearchQuery('');
                   setActiveFilter('All');
                 }}
-                className="mt-4 px-6 py-2.5 bg-[#8B6B4D] text-[#FFFDF9] hover:bg-[#A67C52] border border-[#8B6B4D] text-[10px] font-bold uppercase tracking-widest rounded-full transition-all"
+                className="mt-4 px-6 py-2.5 bg-[#8B6B4D] text-[#FFFDF9] hover:bg-[#A67C52] border border-[#8B6B4D] text-[10px] font-bold uppercase tracking-widest rounded-full transition"
                 id="btn-no-match-clear"
               >
                 Clear Filters

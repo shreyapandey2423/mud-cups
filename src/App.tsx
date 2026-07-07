@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import Header from './components/Header';
@@ -6,11 +6,11 @@ import Footer from './components/Footer';
 import Loader from './components/Loader';
 import BackToTop from './components/BackToTop';
 
-const Home = lazy(() => import('./pages/Home'));
-const MenuPage = lazy(() => import('./pages/MenuPage'));
-const GalleryPage = lazy(() => import('./pages/GalleryPage'));
-const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
-const VisitUsPage = lazy(() => import('./pages/VisitUsPage'));
+import Home from './pages/Home';
+import MenuPage from './pages/MenuPage';
+import GalleryPage from './pages/GalleryPage';
+import TestimonialsPage from './pages/TestimonialsPage';
+import VisitUsPage from './pages/VisitUsPage';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -85,7 +85,7 @@ function MainApp() {
       <Header isFirstVisit={isFirstVisit} />
             
       <main>
-        <Suspense fallback={<Loader isLoading={true} />}>
+        
           <AnimatePresence mode="wait">
             {/* @ts-expect-error React 19 types issue with key on Routes */}
             <Routes location={location} key={location.pathname}>
@@ -97,7 +97,7 @@ function MainApp() {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </AnimatePresence>
-        </Suspense>
+        
       </main>
           
       <Footer />

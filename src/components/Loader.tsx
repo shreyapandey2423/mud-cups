@@ -5,22 +5,9 @@ interface LoaderProps {
   isMoving?: boolean;
   onHoldComplete?: () => void;
   onMoveComplete?: () => void;
-  isLoading?: boolean;
 }
 
-export default function Loader({ isMoving, onHoldComplete, onMoveComplete, isLoading }: LoaderProps) {
-  // Backwards compatibility if isLoading is passed (for fallback Suspense)
-  if (isLoading !== undefined && !onHoldComplete) {
-    if (!isLoading) return null;
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#F7F2EB]">
-        <div className="relative z-10">
-           <MudCupsLogo interactive={false} className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px]" />
-        </div>
-      </div>
-    );
-  }
-
+export default function Loader({ isMoving, onHoldComplete, onMoveComplete }: LoaderProps) {
   return (
     <motion.div
       exit={{ opacity: 0 }}

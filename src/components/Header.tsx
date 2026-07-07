@@ -132,22 +132,22 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
             >
               <div className="relative group-hover:scale-105 transition-transform duration-500 ease-out">
                 {/* Subtle warm glow behind the logo */}
-                <div className="absolute inset-0 rounded-full blur-xl scale-125 transition-colors duration-1000 bg-transparent" />
+                <div className="absolute inset-0 rounded-full blur-xl scale-125 transition duration-1000 bg-transparent" />
                 <MudCupsLogo 
                   layoutId="mud-cups-main-logo" 
                   interactive={false} 
-                  className={`relative z-10 h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12 transition-all duration-1000 ${
+                  className={`relative z-10 h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12 transition duration-1000 ${
                     isScrolledOrOpen ? '' : 'drop-shadow-[0_2px_12px_rgba(45,36,31,0.7)] brightness-105 contrast-105'
                   }`} 
                 />
               </div>
               <div className="flex flex-col relative z-10">
-                <span className={`text-sm font-black tracking-[0.2em] uppercase leading-none font-sans transition-all duration-1000 [text-rendering:optimizeLegibility] ${
+                <span className={`text-sm font-black tracking-[0.2em] uppercase leading-none font-sans transition duration-1000 [text-rendering:optimizeLegibility] ${
                   isScrolledOrOpen ? 'text-[#2D241F]' : 'text-[#F7F2EB] drop-shadow-[0_2px_8px_rgba(26,20,18,0.9)]'
                 }`}>
                   MUD CUPS
                 </span>
-                <span className={`text-[8px] font-semibold tracking-[0.1em] mt-0.5 leading-none font-mono transition-all duration-1000 ${
+                <span className={`text-[8px] font-semibold tracking-[0.1em] mt-0.5 leading-none font-mono transition duration-1000 ${
                   isScrolledOrOpen ? 'text-[#6A5A4D]' : 'text-[#D4C4B4] drop-shadow-[0_1px_4px_rgba(26,20,18,0.9)]'
                 }`}>
                   REVIVING TRADITIONAL TASTE
@@ -169,13 +169,13 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                       key={item.id}
                       href={item.path}
                       onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
-                      className={`text-[12px] uppercase tracking-[0.2em] transition-all duration-500 cursor-pointer relative py-2 px-1 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent group ${
+                      className={`text-[12px] uppercase tracking-[0.2em] transition duration-500 cursor-pointer relative py-2 px-1 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent group ${
                         isActive ? `font-semibold ${activeColor}` : `font-medium ${baseColor} ${hoverColor}`
                       }`}
                     >
                       {item.label}
                       <span 
-                        className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] transition-all duration-500 ease-[0.22,1,0.36,1] ${underlineColor} ${
+                        className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] transition duration-500 ease-[0.22,1,0.36,1] ${underlineColor} ${
                           isActive ? 'w-full' : 'w-0 group-hover:w-1/2'
                         }`} 
                       />
@@ -184,13 +184,13 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                 })}
               </nav>
 
-              <div className={`w-[1px] h-4 ml-2 transition-colors duration-1000 ${isScrolledOrOpen ? 'bg-[#DDD2C2]/60' : 'bg-[#D4C4B4]/40'}`} />
+              <div className={`w-[1px] h-4 ml-2 transition duration-1000 ${isScrolledOrOpen ? 'bg-[#DDD2C2]/60' : 'bg-[#D4C4B4]/40'}`} />
 
               <a
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-all duration-500 hover:scale-[1.1] ml-2 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
+                className={`transition duration-500 hover:scale-[1.1] ml-2 p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
                   isScrolledOrOpen ? 'text-[#6A5A4D] hover:text-[#8B6B4D] hover:bg-[#F7F2EB]' : 'text-[#EFE6D8] hover:text-[#FFFDF9] hover:bg-[#FFFDF9]/10 drop-shadow-[0_2px_4px_rgba(26,20,18,0.8)]'
                 }`}
                 aria-label="Instagram"
@@ -204,7 +204,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`transition-all duration-500 hover:scale-[1.1] p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
+                className={`transition duration-500 hover:scale-[1.1] p-1.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
                   isScrolledOrOpen ? 'text-[#6A5A4D] hover:text-[#8B6B4D] hover:bg-[#F7F2EB]' : 'text-[#EFE6D8] hover:text-[#FFFDF9] hover:bg-[#FFFDF9]/10 drop-shadow-[0_2px_4px_rgba(26,20,18,0.8)]'
                 }`}
                 aria-label="Instagram"
@@ -215,7 +215,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-10 h-10 flex items-center justify-center transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-full ${
+                className={`w-10 h-10 flex items-center justify-center transition duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-full ${
                   isScrolledOrOpen ? 'text-[#2D241F] hover:bg-[#F7F2EB]' : 'text-[#EFE6D8] hover:text-[#FFFDF9] hover:bg-[#FFFDF9]/10 drop-shadow-[0_2px_4px_rgba(26,20,18,0.8)]'
                 }`}
                 aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} aria-controls="mobile-navigation"
@@ -249,7 +249,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                         key={item.id}
                         href={item.path}
                         onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
-                        className={`text-left text-2xl font-semibold uppercase tracking-[0.2em] transition-colors cursor-pointer w-full flex items-center space-x-4 px-2 py-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F7F2EB] ${
+                        className={`text-left text-2xl font-semibold uppercase tracking-[0.2em] transition cursor-pointer w-full flex items-center space-x-4 px-2 py-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F7F2EB] ${
                           isActive ? 'text-[#8B6B4D]' : 'text-[#2D241F]'
                         }`}
                       >

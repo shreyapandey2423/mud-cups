@@ -64,7 +64,7 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
         <motion.div 
           animate={{ opacity: [0.3, 0.45, 0.3], scale: [1, 1.05, 1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-[#E5D5C5] blur-[100px] sm:blur-[140px] opacity-40 mix-blend-overlay pointer-events-none will-change-transform" 
+          className="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(229,213,197,0.8)_0%,transparent_70%)] opacity-40 mix-blend-overlay pointer-events-none will-change-transform" 
           style={{ transform: 'translateZ(0)' }}
         />
 
@@ -72,23 +72,13 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
         <motion.div 
           animate={{ opacity: [0.2, 0.35, 0.2], scale: [1, 1.1, 1] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-[20%] -right-[10%] w-[70vw] h-[70vw] rounded-full bg-[#D4C4B4] blur-[120px] sm:blur-[160px] opacity-30 mix-blend-overlay pointer-events-none will-change-transform" 
+          className="absolute -bottom-[20%] -right-[10%] w-[70vw] h-[70vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,196,180,0.6)_0%,transparent_70%)] opacity-30 mix-blend-overlay pointer-events-none will-change-transform" 
           style={{ transform: 'translateZ(0)' }}
         />
         
         {/* Soft drifting steam effect (Bottom to Top) */}
-        <motion.div 
-          animate={{ y: ['10%', '-20%'], opacity: [0, 0.15, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 pointer-events-none bg-[url('/images/noise.svg')] opacity-[0.03] mix-blend-overlay scale-150 will-change-transform" 
-          style={{ filter: 'blur(8px)', transform: 'translateZ(0)' }}
-        />
-        <motion.div 
-          animate={{ y: ['20%', '-10%'], x: ['-2%', '2%'], opacity: [0, 0.1, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear", delay: 5 }}
-          className="absolute inset-0 pointer-events-none bg-[url('/images/noise.svg')] opacity-[0.02] mix-blend-overlay scale-150 will-change-transform" 
-          style={{ filter: 'blur(12px)', transform: 'translateZ(0)' }}
-        />
+        
+        
 
         {/* Cinematic Noise & Vignette */}
         <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.15] mix-blend-overlay" 
@@ -145,7 +135,7 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
         <button
           type="button"
           onClick={handleScrollToMenu}
-          className="text-[#FFFDF9]/70 hover:text-[#FFFDF9] transition-colors cursor-pointer p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1412] rounded-full drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
+          className="text-[#FFFDF9]/70 hover:text-[#FFFDF9] transition cursor-pointer p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1412] rounded-full drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
           aria-label="Scroll to Menu"
         >
           <motion.div

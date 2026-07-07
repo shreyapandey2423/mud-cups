@@ -9,7 +9,7 @@ const Footer = function Footer() {
   return (
     <footer className="bg-[#EFE6D8] border-t border-[#D4C4B4]/40 text-[#2D241F] font-sans overflow-hidden relative">
       {/* Subtle ambient light */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[radial-gradient(circle_at_top,rgba(255,253,249,0.3)_0%,transparent_70%)] rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[radial-gradient(circle_at_top,rgba(255,253,249,0.3)_0%,transparent_70%)] rounded-full  pointer-events-none" />
 
       {/* 2. Minimal Redesigned Footer */}
       <div
@@ -39,17 +39,17 @@ const Footer = function Footer() {
           <div className="flex flex-col items-start md:items-end space-y-12 md:space-y-16">
             {/* Minimal Links */}
             <nav aria-label="Footer Navigation" className="flex flex-wrap gap-8">
-               <Link to="/menu" aria-label="View Menu" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+               <Link to="/menu" aria-label="View Menu" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                  Menu
-                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
+                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
                </Link>
-               <Link to="/visit-us" aria-label="Visit Us Location Information" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+               <Link to="/visit-us" aria-label="Visit Us Location Information" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                  Visit Us
-                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
+                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
                </Link>
-               <a href="https://www.instagram.com/mud_cups_ananthnagar/" target="_blank" rel="noopener noreferrer" aria-label="Follow Mud Cups on Instagram" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+               <a href="https://www.instagram.com/mud_cups_ananthnagar/" target="_blank" rel="noopener noreferrer" aria-label="Follow Mud Cups on Instagram" className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                  Instagram
-                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
+                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition duration-300 ease-[0.22,1,0.36,1] group-hover:w-full opacity-60" />
                </a>
             </nav>
             {/* Minimal Copyright */}

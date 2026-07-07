@@ -12,7 +12,7 @@ export default function Offers() {
       className="scroll-mt-24 bg-[#EFE6D8] py-24 lg:py-32 relative border-b border-[#DDD2C2]/40 overflow-hidden"
     >
       {/* Ambient background glow */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(255,253,249,0.4)_0%,transparent_70%)] rounded-full blur-[100px] pointer-events-none transform translate-x-1/3 -translate-y-1/3 will-change-transform translate-z-0" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,rgba(255,253,249,0.4)_0%,transparent_70%)] rounded-full  pointer-events-none transform translate-x-1/3 -translate-y-1/3 will-change-transform translate-z-0" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
 
@@ -68,7 +68,7 @@ export default function Offers() {
           >
             <div className="bg-[#FFFDF9] border border-[#D4C4B4]/40 p-10 sm:p-14 lg:p-16 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(45,36,31,0.08)] relative overflow-hidden group ring-1 ring-white/50">
               {/* Decorative Background Accent */}
-              <div className="absolute -top-32 -right-32 w-80 h-80 bg-[radial-gradient(circle_at_center,#EFE6D8_0%,transparent_70%)] rounded-full blur-3xl opacity-50 pointer-events-none will-change-transform translate-z-0 transition-opacity duration-1000 group-hover:opacity-100" />
+              <div className="absolute -top-32 -right-32 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(239,230,216,0.5)_0%,transparent_70%)] rounded-full opacity-50 pointer-events-none will-change-transform translate-z-0 transition-opacity duration-1000 group-hover:opacity-100" />
 
               <div className="relative z-10 space-y-12 text-left">
                 <div className="space-y-6">
@@ -90,7 +90,7 @@ export default function Offers() {
                     href="https://www.swiggy.com/restaurants/mud-cups-electronic-city-bangalore-1218505"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-start bg-[#F7F2EB]/50 backdrop-blur-sm will-change-transform translate-z-0 border border-[#D4C4B4]/40 p-8 rounded-3xl transition-all duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
+                    className="flex flex-col items-start bg-[#F7F2EB]/50 backdrop-blur-sm will-change-transform translate-z-0 border border-[#D4C4B4]/40 p-8 rounded-3xl transition duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
                   >
                     {/* Swiggy Logo */}
                     <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-[#D4C4B4]/30 flex items-center justify-center mb-6 p-2.5 transition-transform duration-500 group-hover/btn:scale-105">
@@ -99,7 +99,7 @@ export default function Offers() {
                     </div>
                     <h4 className="text-xl font-semibold text-[#2D241F] tracking-tight mb-2">Swiggy</h4>
                     <p className="text-sm text-[#6A5A4D]/80 font-normal mb-8">Fast Delivery</p>
-                    <div className="mt-auto flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8B6B4D] group-hover/btn:text-[#2D241F] transition-colors">
+                    <div className="mt-auto flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8B6B4D] group-hover/btn:text-[#2D241F] transition">
                       <span>Order on Swiggy</span>
                       <ArrowRight className="w-4 h-4 transition-transform duration-500 ease-out group-hover/btn:translate-x-1.5" />
                     </div>
@@ -110,7 +110,7 @@ export default function Offers() {
                     href="https://www.zomato.com/bangalore/mud-cups-10-electronic-city-bangalore/order"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-start bg-[#F7F2EB]/50 backdrop-blur-sm will-change-transform translate-z-0 border border-[#D4C4B4]/40 p-8 rounded-3xl transition-all duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
+                    className="flex flex-col items-start bg-[#F7F2EB]/50 backdrop-blur-sm will-change-transform translate-z-0 border border-[#D4C4B4]/40 p-8 rounded-3xl transition duration-500 hover:bg-[#FFFDF9] hover:shadow-[0_12px_40px_-10px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
                   >
                     {/* Zomato Logo */}
                     <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-[#D4C4B4]/30 flex items-center justify-center mb-6 p-2.5 transition-transform duration-500 group-hover/btn:scale-105">
@@ -119,7 +119,7 @@ export default function Offers() {
                     </div>
                     <h4 className="text-xl font-semibold text-[#2D241F] tracking-tight mb-2">Zomato</h4>
                     <p className="text-sm text-[#6A5A4D]/80 font-normal mb-8">Order Online</p>
-                    <div className="mt-auto flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8B6B4D] group-hover/btn:text-[#2D241F] transition-colors">
+                    <div className="mt-auto flex items-center space-x-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#8B6B4D] group-hover/btn:text-[#2D241F] transition">
                       <span>Order on Zomato</span>
                       <ArrowRight className="w-4 h-4 transition-transform duration-500 ease-out group-hover/btn:translate-x-1.5" />
                     </div>
