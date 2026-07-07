@@ -29,7 +29,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
  const headerBg = useTransform(
   scrollY,
   [0, 40],
-  ['rgba(42, 32, 27, 0.30)', 'rgba(32, 24, 20, 0.72)']
+  ['rgba(32, 24, 20, 0.7)', 'rgba(32, 24, 20, 0.95)']
 );
   const activeHeaderBg = isOpen ? 'rgba(32, 24, 20, 0.95)' : headerBg;
 
@@ -102,7 +102,7 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: initialIntro ? 2.35 : 0, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 ${
+        className={`fixed top-0 left-0 right-0 z-50 h-[80px] ${
           isFirstVisit ? 'pointer-events-none' : ''
         }`}
       >
@@ -111,13 +111,14 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
           style={{
             backgroundColor: activeHeaderBg,
             boxShadow: '0 12px 40px rgba(0, 0, 0, 0.22)',
-backdropFilter: 'blur(22px)',           WebkitBackdropFilter: 'blur(22px)',
+backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             border: '1px solid rgba(255, 255, 255, 0.12)'
           }}
         />
 
         <motion.div 
-          className="relative z-10 flex items-center justify-between px-6 py-4 md:px-10 md:py-5 max-w-[1700px] mx-auto transition-all duration-700"
+          className="relative z-10 flex items-center justify-between h-full px-6 md:px-10 max-w-[1700px] mx-auto transition-all duration-700"
         >
           <div className="flex items-center justify-between w-full">
             
