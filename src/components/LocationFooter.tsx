@@ -187,7 +187,7 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                   height="100%" 
                   style={{ border: 0 }} 
                   allowFullScreen={true} 
-                  loading="lazy" 
+                  loading="lazy" decoding="async" 
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Mud Cups Location Map"
                   className="w-full h-full object-cover transition duration-700 ease-[0.22,1,0.36,1] grayscale-0 group-hover:grayscale-0"

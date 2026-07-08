@@ -2,15 +2,15 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
-const gallery001 = '/images/gallery1.jpg';
-const gallery002 = '/images/gallery2.jpg';
-const gallery003 = '/images/gallery3.jpg';
-const gallery004 = '/images/gallery4.jpg';
-const gallery005 = '/images/gallery5.jpg';
-const gallery006 = '/images/gallery6.jpg';
-const gallery007 = '/images/gallery7.jpg';
-const gallery008 = '/images/gallery8.jpg';
-const gallery009 = '/images/gallery9.jpg';
+const gallery001 = '/images/gallery1.webp';
+const gallery002 = '/images/gallery2.webp';
+const gallery003 = '/images/gallery3.webp';
+const gallery004 = '/images/gallery4.webp';
+const gallery005 = '/images/gallery5.webp';
+const gallery006 = '/images/gallery6.webp';
+const gallery007 = '/images/gallery7.webp';
+const gallery008 = '/images/gallery8.webp';
+const gallery009 = '/images/gallery9.webp';
 
 const originalImages = [
   { src: gallery001 },
@@ -114,8 +114,8 @@ export default function GalleryPage() {
                   <img 
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
-                    className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
-                    loading="lazy"
+                    className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-110"
+                    loading="lazy" decoding="async"
                   />
                 </div>
               ))}
@@ -136,8 +136,8 @@ export default function GalleryPage() {
                   <img 
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
-                    className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
-                    loading="lazy"
+                    className="w-full h-full object-cover object-center transform-gpu transition duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-110"
+                    loading="lazy" decoding="async"
                   />
                 </div>
               ))}

@@ -94,7 +94,7 @@ export default function Offers() {
                   >
                     {/* Swiggy Logo */}
                     <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-[#D4C4B4]/30 flex items-center justify-center mb-6 p-2.5 transition-transform duration-500 group-hover/btn:scale-105">
-                      <img src={swiggyLogo} alt="Swiggy" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <img src={swiggyLogo} alt="Swiggy" className="w-full h-auto" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
                       <span className="hidden font-bold text-[#FC8019] text-sm tracking-tight">SWIGGY</span>
                     </div>
                     <h4 className="text-xl font-semibold text-[#2D241F] tracking-tight mb-2">Swiggy</h4>
@@ -114,7 +114,7 @@ export default function Offers() {
                   >
                     {/* Zomato Logo */}
                     <div className="w-14 h-14 bg-white rounded-2xl shadow-sm border border-[#D4C4B4]/30 flex items-center justify-center mb-6 p-2.5 transition-transform duration-500 group-hover/btn:scale-105">
-                      <img src={zomatoLogo} alt="Zomato" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <img src={zomatoLogo} alt="Zomato" className="w-full h-auto" loading="lazy" decoding="async" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
                       <span className="hidden font-bold text-[#E23744] text-sm tracking-tight font-serif italic">Zomato</span>
                     </div>
                     <h4 className="text-xl font-semibold text-[#2D241F] tracking-tight mb-2">Zomato</h4>

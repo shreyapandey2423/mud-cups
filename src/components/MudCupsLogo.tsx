@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-const logoImg = '/images/mud-cups-logo.jpg';
+const logoImg = '/images/mud-cups-logo.webp';
 
 interface MudCupsLogoProps {
   className?: string;
   size?: number; // Base size if needed, though we will rely on className for responsive sizes now
   interactive?: boolean; // We might want to disable interaction on the loading screen? The prompt says "Make the logo interactive. When the user clicks the logo..."
   layoutId?: string;
+  style?: React.CSSProperties;
 }
 
-export default function MudCupsLogo({ className = '', size, interactive = true, layoutId }: MudCupsLogoProps) {
+export default function MudCupsLogo({ className = '', size, interactive = true, layoutId, style }: MudCupsLogoProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Close on Escape key
@@ -68,7 +69,7 @@ export default function MudCupsLogo({ className = '', size, interactive = true, 
         layoutId={layoutId}
         transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
         className={`relative shrink-0 flex items-center justify-center ${interactive ? 'cursor-pointer' : ''} ${className}`}
-        style={size ? { height: size, width: size } : {}}
+        style={size ? { height: size, width: size, ...style } : style}
         onClick={toggleOpen}
         onKeyDown={handleKeyDown}
         tabIndex={interactive ? 0 : -1}

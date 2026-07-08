@@ -45,12 +45,13 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#2D241F]">
         {/* Restored Original AI Hero Image with Color Grading and Responsive Optimization */}
         <img
-          src="/images/hero.jpg"
+          src="/images/hero.webp"
           alt="Mud Cups Café"
           fetchPriority="high"
           loading="eager"
-          decoding="sync"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-90 contrast-[1.08] brightness-[0.92] saturate-[1.1] sepia-[0.1]"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-90"
+          style={{ filter: 'contrast(1.08) brightness(0.92) saturate(1.1) sepia(0.1)' }}
         />
         
         {/* Cinematic Multi-layer Gradient Overlay (Responsively tuned for readability) */}

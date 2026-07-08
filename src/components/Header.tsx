@@ -136,9 +136,8 @@ const Header = function Header({ isFirstVisit }: HeaderProps) {
                 <MudCupsLogo 
                   layoutId="mud-cups-main-logo" 
                   interactive={false} 
-                  className={`relative z-10 h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12 transition duration-1000 ${
-                    isScrolledOrOpen ? '' : 'drop-shadow-[0_2px_12px_rgba(45,36,31,0.7)] brightness-105 contrast-105'
-                  }`} 
+                  className={`relative z-10 h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12 transition duration-1000`}
+                  style={isScrolledOrOpen ? undefined : { filter: 'drop-shadow(0 2px 12px rgba(45,36,31,0.7)) brightness(1.05) contrast(1.05)' }}
                 />
               </div>
               <div className="flex flex-col relative z-10">
