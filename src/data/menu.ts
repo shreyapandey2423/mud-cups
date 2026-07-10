@@ -16,7 +16,7 @@ export const categories: MenuCategory[] = [
       { id: 'tt9', name: 'Jaggery Tea', priceR: 30, priceL: 59, isVeg: true },
       { id: 'tt10', name: 'Lemon Tea', priceR: 20, priceL: 39, isVeg: true },
       { id: 'tt11', name: 'Honey Lemon Tea', priceR: 25, priceL: 49, isVeg: true },
-      { id: 'tt12', name: 'Tandoori Tea', priceR: 40, priceL: 79, isVeg: true },
+      { id: 'tt12', name: 'Tandoori Tea', priceR: 40, priceL: 79, isVeg: true, isChefPick: true },
       { id: 'tt13', name: 'Hibiscus Tea with Honey', priceR: 39, priceL: 79, isVeg: true },
       { id: 'tt14', name: 'Ice Tea', priceR: null, priceL: 49, isVeg: true },
       { id: 'tt15', name: 'Kashmiri Tea', priceR: null, priceL: 99, isVeg: true },

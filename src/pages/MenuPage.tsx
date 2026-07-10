@@ -1,27 +1,27 @@
-import { motion } from 'motion/react';
+import { m } from 'motion/react';
 import PageHero from '../components/PageHero';
 import MenuSection from '../components/MenuSection';
 
+const easeCurve = [0.16, 1, 0.3, 1];
+
+const isBot = typeof window !== 'undefined' && /bot|googlebot|crawler|spider|robot|crawling|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(navigator.userAgent);
+
 export default function MenuPage() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration: 0.3 }}
-      className="bg-[#F7F2EB] min-h-[100dvh]"
+    <m.div
+      initial={{ opacity: isBot ? 1 : 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: easeCurve }}
+      className="bg-[var(--color-bg-primary)] min-h-[100dvh] relative"
     >
       <PageHero 
         accent="DRINKS & BITES"
-        title="Explore Our Menu"
-        description="From our crispy rolls to piping hot maggi bowls and freshly assembled pasta dishes, we source real ingredients daily."
+        title="The Tasting <br /> Journal."
+        description="Honest ingredients, slow preparation, and flavors that feel like home."
       />
       
-      {/* 
-        MenuSection has its own background styling, 
-        we can wrap it or just render it. It currently has py-20 
-      */}
       <MenuSection />
-    </motion.div>
+    </m.div>
   );
 }

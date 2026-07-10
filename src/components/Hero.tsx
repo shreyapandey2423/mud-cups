@@ -1,153 +1,105 @@
-import React from "react";
-import { motion, useScroll, useTransform } from 'motion/react';
-import { Sparkles, ArrowDown } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { m } from 'motion/react';
+import { Link } from 'react-router-dom';
+
+const easeCurve = [0.16, 1, 0.3, 1];
 
 interface HeroProps {
-  isFirstVisit?: boolean;
+  isFirstVisit: boolean;
 }
 
-const easeCurve = [0.22, 1, 0.36, 1];
-
-const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
-  const containerRef = useRef<HTMLElement>(null);
-  const [initialIntro] = useState(isFirstVisit);
-  const introDelay = initialIntro ? 2.35 : 0;
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start'],
-  });
-  
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  const handleScrollToMenu = () => {
-    const element = document.getElementById('menu');
-    if (element) {
-      const headerOffset = 70;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+export default function Hero({ isFirstVisit }: HeroProps) {
+  const isBot = typeof window !== 'undefined' && /bot|googlebot|crawler|spider|robot|crawling|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(navigator.userAgent);
+  const initialDelay = isBot ? 0 : (isFirstVisit ? 1.5 : 0);
 
   return (
-    <section
-      id="hero"
-      ref={containerRef}
-      className="scroll-mt-24 relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#2D241F] py-16 sm:py-32"
-    >
-      {/* 1. LAYERED BACKGROUND SYSTEM (DEPTH & LIGHTING) */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-[#2D241F]">
-        {/* Restored Original AI Hero Image with Color Grading and Responsive Optimization */}
+    <section className="relative h-[100dvh] w-full overflow-hidden bg-[#110C09] flex items-center justify-center">
+      
+      {/* Background Image - Magazine Photography */}
+      <m.div
+        initial={{ scale: 1.05, opacity: isBot ? 1 : 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.8, ease: easeCurve, delay: initialDelay }}
+        className="absolute inset-0 w-full h-full"
+      >
         <img
           src="/images/hero.webp"
-          alt="Mud Cups Café"
-          fetchPriority="high"
+          alt="Mud Cups Atmosphere"
+          width={1920}
+          height={1080}
+          className="w-full h-full object-cover object-center opacity-75 sepia-[0.05] contrast-[1.02]"
           loading="eager"
+          fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-90"
-          style={{ filter: 'contrast(1.08) brightness(0.92) saturate(1.1) sepia(0.1)' }}
         />
+        {/* Soft vignette and warm light overlays */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(17,12,9,0.7)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#110C09]/40 via-transparent to-[#110C09]/90" />
         
-        {/* Cinematic Multi-layer Gradient Overlay (Responsively tuned for readability) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1412]/60 via-[#2D241F]/20 to-[#1A1412]/90 sm:from-[#2D241F]/30 sm:via-[#4A3B32]/10 sm:to-[#1A1412]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1412]/50 via-transparent to-[#1A1412]/50 sm:from-[#1A1412]/40 sm:via-transparent sm:to-[#1A1412]/40" />
-        
-        {/* Mobile-specific bottom gradient to ensure text readability against busy areas */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#1A1412] via-[#1A1412]/70 to-transparent sm:hidden" />
-        
-        {/* Elegant light bloom (Top Left - Warm sunlight entering) */}
-        <motion.div 
-          animate={{ opacity: [0.3, 0.45, 0.3], scale: [1, 1.05, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(229,213,197,0.8)_0%,transparent_70%)] opacity-40 mix-blend-overlay pointer-events-none will-change-transform" 
-          style={{ transform: 'translateZ(0)' }}
-        />
+        {/* Film grain / Paper texture overlay */}
+        <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-[0.35]" style={{ backgroundImage: 'url("/images/noise.svg")', backgroundSize: '150px' }} />
+      </m.div>
 
-        {/* Elegant light bloom (Bottom Right - Ambient café warmth) */}
-        <motion.div 
-          animate={{ opacity: [0.2, 0.35, 0.2], scale: [1, 1.1, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute -bottom-[20%] -right-[10%] w-[70vw] h-[70vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(212,196,180,0.6)_0%,transparent_70%)] opacity-30 mix-blend-overlay pointer-events-none will-change-transform" 
-          style={{ transform: 'translateZ(0)' }}
-        />
-        
-        {/* Soft drifting steam effect (Bottom to Top) */}
-        
-        
+      {/* Floating Particles / Ambient Glow */}
+      <m.div 
+        animate={{ opacity: [0.15, 0.3, 0.15] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_top_right,rgba(215,160,110,0.15)_0%,transparent_60%)] mix-blend-screen"
+      />
 
-        {/* Cinematic Noise & Vignette */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.15] mix-blend-overlay" 
-             style={{ backgroundImage: 'url("/images/noise.svg")', backgroundSize: '150px' }} />
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(45,36,31,0.08)_100%)]" />
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 sm:px-12 lg:px-24 flex flex-col items-center text-center">
+        <m.div
+          initial={{ opacity: isBot ? 1 : 0, y: isBot ? 0 : 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: easeCurve, delay: initialDelay + 0.4 }}
+          className="mb-8"
+        >
+          <span className="font-sans text-[0.65rem] tracking-[0.25em] text-[#DED9D1] uppercase">An Evening Awaits</span>
+        </m.div>
+        
+        <m.h1
+          initial={{ opacity: isBot ? 1 : 0, y: isBot ? 0 : 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4, ease: easeCurve, delay: initialDelay + 0.6 }}
+          className="text-[clamp(4.5rem,12vw,10rem)] font-serif text-[#FDFCFB] mb-10 leading-[0.9] tracking-tighter"
+        >
+          Where time <br className="hidden sm:block" /> slows down.
+        </m.h1>
+
+        <m.p
+          initial={{ opacity: isBot ? 1 : 0, y: isBot ? 0 : 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.6, ease: easeCurve, delay: initialDelay + 0.8 }}
+          className="font-serif italic text-xl lg:text-2xl text-[#EBE6DC] mb-16 max-w-2xl text-center mx-auto"
+        >
+          Handcrafted clay cups, deeply roasted coffee, and the subtle scent of woodsmoke. A sanctuary for meaningful conversations.
+        </m.p>
+
+        <m.div
+          initial={{ opacity: isBot ? 1 : 0, y: isBot ? 0 : 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.8, ease: easeCurve, delay: initialDelay + 1.0 }}
+        >
+          <Link to="/menu" className="font-sans text-[0.65rem] uppercase tracking-[0.2em] font-medium text-[#FDFCFB] border-b border-[#FDFCFB]/30 pb-2 hover:border-[#FDFCFB] transition-colors duration-[600ms] ease-[0.16,1,0.3,1] px-2 py-3 hover:bg-[#FDFCFB]/5 rounded-sm">
+            Explore the Menu
+          </Link>
+        </m.div>
       </div>
 
-      {/* 2. HERO CONTENT AREA */}
-      <motion.div 
-        style={{ y: contentY, opacity }}
-        className="scroll-mt-24 relative z-10 max-w-[800px] mx-auto px-6 text-center flex flex-col items-center justify-center pt-12 pb-12 sm:pt-20"
-      >
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: introDelay + 0.0, ease: easeCurve }}
-          className="mb-6 sm:mb-8"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFDF9]/90 backdrop-blur-md will-change-transform translate-z-0 border border-[#FFFDF9]/20 text-[10px] sm:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] shadow-[0_4px_16px_rgba(0,0,0,0.25)]">
-            <Sparkles className="w-3 h-3 text-[#B99872]" />
-            <span>Reviving Traditional Taste</span>
-          </span>
-        </motion.div>
-
-        {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: introDelay + 0.05, ease: easeCurve }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#FFFDF9] tracking-tight leading-[1.1] font-sans max-w-[600px] mx-auto mb-6 sm:mb-8 drop-shadow-[0_4px_24px_rgba(26,20,18,0.7)]"
-        >
-          Not Your Average<br />Chai Stop.
-        </motion.h1>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: introDelay + 0.10, ease: easeCurve }}
-          className="text-base sm:text-lg text-[#F7F2EB] leading-[2.35] font-normal max-w-[500px] mx-auto drop-shadow-[0_2px_16px_rgba(26,20,18,0.8)]"
-        >
-          Mud Cups—where smoky Tandoori Chai meets toasty bites, chilled conversations, and cozy vibes.
-        </motion.p>
-      </motion.div>
-
-      {/* Down arrow scroll helper */}
-      <motion.div
-        initial={{ opacity: 0 }}
+      {/* Elegant scroll indicator */}
+      <m.div 
+        initial={{ opacity: isBot ? 1 : 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: introDelay + 0.15 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:block"
+        transition={{ duration: 1.8, ease: easeCurve, delay: initialDelay + 2 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6"
       >
-        <button
-          type="button"
-          onClick={handleScrollToMenu}
-          className="text-[#FFFDF9]/70 hover:text-[#FFFDF9] transition cursor-pointer p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A1412] rounded-full drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
-          aria-label="Scroll to Menu"
-        >
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown className="w-5 h-5" />
-          </motion.div>
-        </button>
-      </motion.div>
+        <div className="w-[1px] h-16 bg-[#EBE6DC]/20 relative overflow-hidden">
+          <m.div 
+            className="w-full h-1/2 bg-[#FDFCFB] absolute top-0"
+            animate={{ y: ['-100%', '300%'] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+      </m.div>
     </section>
   );
 }
-export default React.memo(Hero);

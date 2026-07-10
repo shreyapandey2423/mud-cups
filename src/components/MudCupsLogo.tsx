@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
 const logoImg = '/images/mud-cups-logo.webp';
 
@@ -40,7 +40,7 @@ export default function MudCupsLogo({ className = '', size, interactive = true, 
   const modalContent = (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -48,7 +48,7 @@ export default function MudCupsLogo({ className = '', size, interactive = true, 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         >
-          <motion.img
+          <m.img
             src={logoImg}
             alt="Mud Cups Logo Enlarged"
             initial={{ scale: 0.95, opacity: 0 }}
@@ -58,14 +58,14 @@ export default function MudCupsLogo({ className = '', size, interactive = true, 
             className="w-[160px] md:w-[190px] lg:w-[220px] h-auto object-contain drop-shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
 
   return (
     <>
-      <motion.div
+      <m.div
         layoutId={layoutId}
         transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
         className={`relative shrink-0 flex items-center justify-center ${interactive ? 'cursor-pointer' : ''} ${className}`}
@@ -76,14 +76,14 @@ export default function MudCupsLogo({ className = '', size, interactive = true, 
         role={interactive ? 'button' : 'img'}
         aria-label="Mud Cups Logo"
       >
-        <motion.img
+        <m.img
           src={logoImg}
           alt="Mud Cups Logo"
           className="w-full h-full object-contain"
           whileHover={interactive ? { scale: 1.03 } : {}}
           transition={{ duration: 0.18, ease: 'easeOut' }}
         />
-      </motion.div>
+      </m.div>
       {typeof window !== 'undefined' && createPortal(modalContent, document.body)}
     </>
   );
